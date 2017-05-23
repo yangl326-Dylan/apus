@@ -7,7 +7,7 @@ package com.dylan326.apus;
  * 2、翻转数字，和源数字判定是否相等
  */
 public class A9PalindromeNum {
-    public boolean isPalindrome(int x) {
+    public static boolean isPalindrome1(int x) {
         if(x == Integer.MAX_VALUE || x== Integer.MIN_VALUE){
             return false;
         }
@@ -40,5 +40,9 @@ public class A9PalindromeNum {
 
         }
         return (x/result)%10;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(isPalindrome1(13331));
     }
 }
