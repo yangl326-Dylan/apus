@@ -8,7 +8,7 @@ package com.dylan326.justcode;
 public class C2DicOrder {
 
     //{1,2,6,5,4,3,0}
-    private static int[] nextOrder(int[] a) {
+    public static int[] nextOrder(int[] a) {
         int flag = -1;
         int index = 0;
         for (int i = a.length - 1; i > 0; i--) {
