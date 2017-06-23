@@ -6,6 +6,12 @@ import java.util.Arrays;
  * Created by dylan on 2017/6/5.
  * 全排列递归方式理解
  * p[n] = 每个元素开头+剩下n-1个元素的全排列
+ * 递归思路理解：
+ * 如果需要1~n元素的全排列， 那么1固定2~n的全排列，等等，直到n固定那么到达递归函数的的出口条件
+ * 同理2开头
+ * ...
+ * ...
+ * n开头
  */
 public class C1FullArray {
 
