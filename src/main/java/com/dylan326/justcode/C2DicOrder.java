@@ -11,7 +11,7 @@ public class C2DicOrder {
     public static int[] nextOrder(int[] a) {
         int flag = -1;
         int index = 0;
-        for (int i = a.length - 1; i > 0; i--) {
+        for (int i = a.length - 1; i > 0; i--) { //找到第一个邻位递减的， 记录位置index
             if (a[i] > a[i - 1]) {
                 flag = a[i - 1];
                 index = i - 1;
@@ -19,21 +19,24 @@ public class C2DicOrder {
             }
         }
 
-        if (flag == -1) {
+        if (flag == -1) { // 没找到下一个， 直接返回自己
+           /* for (int i = 0, j = a.length - 1; i < j; i++, j--) {  // 注释部分表示没有下一个 从头开始
+                swap(a,i,j);
+            }*/
             return a;
         }
 
         int delta = Integer.MAX_VALUE;
         int indexSwap = 0;
-        for (int i = index + 1; i < a.length; i++) {
+        for (int i = index + 1; i < a.length; i++) { // 找到index之后第一个比index位置值大的索引位置indexswap
             if (a[i] > flag && (a[i] - flag) < delta) {
                 delta = (a[i] - flag);
                 indexSwap = i;
             }
         }
 
-        swap(a, index, indexSwap);
-        sortIncr(a, index + 1, a.length);
+        swap(a, index, indexSwap); // 交换 index  indexswap 两索引位置的值
+        sortIncr(a, index + 1, a.length); // 对index 之后的位置升序排列
         return a;
     }
 
@@ -53,4 +56,7 @@ public class C2DicOrder {
         a[indexSwap] = tmp;
     }
 
+    public static void main(String[] args) {
+        System.out.println(nextOrder(new int[]{1,2,3,4}));
+    }
 }

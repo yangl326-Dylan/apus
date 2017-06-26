@@ -14,7 +14,7 @@ package com.dylan326.justcode;
  * 最后剩3个台阶，那么前n-1个的走法是f（n-3）
  * 那么n的走法就是上述的走法之和
  */
-public class C5nTJ {
+public class C6nTJ {
 
     /**
      * n个台阶的走法问题
