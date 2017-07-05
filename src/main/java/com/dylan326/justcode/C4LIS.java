@@ -54,7 +54,7 @@ public class C4LIS {
 
         for (int j = maxLength.length - 1; j >= 0; j--) { // 找到结果，开始递减的位置
             int flag = tmp;
-            if (maxLength[j] != tmp) { //第一个最长位置才是后续代码的起点
+            if (maxLength[j] != tmp) { //第一个最长结果位置才是后续代码的起点
                 continue;
             }
             for (int i = j; i >= 0; i--) {
