@@ -8,9 +8,9 @@ import java.util.Arrays;
  */
 public class C3Permutation {
     //    {1,2,3,4}
-    public static void allPermutation(int[] array) {
+    public static void permutation(int[] array) {
         int[] tmp = new int[array.length];
-        while (!isEqual(tmp,array)){
+        while (!isEqual(tmp,array)){ // 数组不相等，条件依赖字典序下个序列函数写法
             for (int i = 0; i <array.length; i++) {
                 tmp[i] = array[i];
             }
@@ -33,6 +33,6 @@ public class C3Permutation {
     }
 
     public static void main(String[] args) {
-        allPermutation(new int[]{1, 2, 3, 4});
+        permutation(new int[]{1, 2, 3, 4});
     }
 }
