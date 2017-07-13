@@ -2,9 +2,16 @@ package com.dylan326.justcode;
 
 /**
  * Created by dylan on 2017/6/13.
- * 最长递增子串个数
+ *
  */
 public class C4LIS {
+
+    /**
+     * 最长递增子串个数
+     *
+     * @param a
+     * @return
+     */
     public static int LIS(int[] a) {
         int[] maxLength = new int[a.length];
         for (int i = 0; i < a.length; i++) {
@@ -29,7 +36,7 @@ public class C4LIS {
 
     /**
      * 倒序输出所有结果
-     *
+     * 最长递增子序列
      * @param a
      * @return
      */
