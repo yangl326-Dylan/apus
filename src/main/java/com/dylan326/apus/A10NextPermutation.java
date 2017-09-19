@@ -8,7 +8,7 @@ import java.util.Arrays;
  * 1,4,3,2 -> 2,1,3,4
  * 1,3,4,2 -> 1,4,2,3
  */
-public class A10NexPermutation {
+public class A10NextPermutation {
 
     public static int[] next(int[] num) {
         int tmp1 = -1;

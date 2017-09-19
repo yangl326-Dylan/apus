@@ -18,11 +18,10 @@ public class A2Add2Num {
     public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
 
         int status = 0;
+        ListNode tmpNode = new ListNode(0);
         ListNode result = new ListNode(0);
-        ListNode result2 = new ListNode(0);
         int i = 0;
-        while (true) {
-            i++;
+        while (i++ >= 0) {
             ListNode tmp = new ListNode(0);
             if (l1 != null && l2 != null) {
                 tmp.val = (l1.val + l2.val + status) % 10;
@@ -41,7 +40,7 @@ public class A2Add2Num {
                     status = 0;
                 }
                 l2 = l2.next;
-            } else if (l1 != null && l2 == null) {
+            } else if (l1 != null) {
                 tmp.val = (l1.val + status) % 10;
                 if ((l1.val + status) / 10 == 1) {
                     status = 1;
@@ -51,18 +50,18 @@ public class A2Add2Num {
                 l1 = l1.next;
             } else {
                 if (status != 0) {
-                    result.next = new ListNode(1);
+                    tmpNode.next = new ListNode(1);
                 }
                 break;
             }
             if (i == 1) {
-                result2 = tmp;
+                result = tmp;
             }
-            result.next = tmp;
-            result = result.next;
+            tmpNode.next = tmp;
+            tmpNode = tmpNode.next;
 
         }
-        return result2;
+        return result;
     }
 
     public static void main(String[] args) {
