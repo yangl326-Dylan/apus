@@ -2,7 +2,7 @@ package com.dylan326.apus;
 
 /**
  * Created by dylan on 2017/5/22.
- * 很基础，组合排序的中间流程，我面试候选者有时会会考察这个题目
+ * 很基础，组合排序的中间流程，我面试候选者有时会考察这个题目
  */
 public class A4MedianOfTwoSortedArray {
     public static double findMedianSortedArrays(int[] a, int[] b) {

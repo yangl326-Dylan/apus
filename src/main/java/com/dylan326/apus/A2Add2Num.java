@@ -4,7 +4,7 @@ package com.dylan326.apus;
  * Created by dylan on 2017/5/22.
  * 链表数据相加
  * 注意进位状态，只可能是0或者1
- * 思考反向表示数据如何处理
+ * 思考反向表示大数如何处理
  */
 public class A2Add2Num {
     /**

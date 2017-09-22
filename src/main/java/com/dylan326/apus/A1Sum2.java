@@ -10,6 +10,13 @@ import java.util.Map;
  * method 1、直接方法
  */
 public class A1Sum2 {
+
+    /**
+     * 直接思路方法
+     * @param nums
+     * @param target
+     * @return
+     */
     public static int[] a1Sum2Method1(int[] nums, int target) {
         int[] result = new int[]{0, 0};
         for (int i = 0; i < nums.length - 1; i++) {
@@ -28,7 +35,7 @@ public class A1Sum2 {
     public static int[] a1Sum2Method2(int[] nums, int target) {
         int[] result = new int[]{0, 0};
         Map<Integer, Integer> tmp = new HashMap();
-        for (int i = 0; i < nums.length; i++) {
+        for (int i = 0; i < nums.length; i++) { // 空间换时间。存储值和索引对应关系
             tmp.put(nums[i], i);
         }
 
