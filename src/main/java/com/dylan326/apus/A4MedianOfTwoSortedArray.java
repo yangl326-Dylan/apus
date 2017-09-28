@@ -5,18 +5,18 @@ package com.dylan326.apus;
  * 很基础，组合排序的中间流程，我面试候选者有时会考察这个题目
  */
 public class A4MedianOfTwoSortedArray {
-    public static double findMedianSortedArrays(int[] a, int[] b) {
-        int la = a.length;
-        int lb = b.length;
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        int la = nums1.length;
+        int lb = nums2.length;
         if (la == lb && lb == 0) {
             return 0;
         }
         if ((la + lb) % 2 == 0) {
             int m1 = (la + lb) / 2;
             int m2 = m1 + 1;
-            return (findM(a, b, m1) + findM(a, b, m2)) * 1.0 / 2.0;
+            return (findM(nums1, nums2, m1) + findM(nums1, nums2, m2)) * 1.0 / 2.0;
         } else {
-            return findM(a, b, (la + lb + 1) / 2);
+            return findM(nums1, nums2, (la + lb + 1) / 2);
         }
     }
 
