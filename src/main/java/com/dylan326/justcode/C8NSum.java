@@ -3,7 +3,7 @@ package com.dylan326.justcode;
 /**
  * Created by dylan on 2017/9/21.
  */
-public class NSum {
+public class C8NSum {
     public static void main(String[] args) {
         nSum(new int[]{1, 0, -1, 0, -2, 2}, 0, 5, 4, 0);
     }

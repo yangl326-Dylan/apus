@@ -2,8 +2,7 @@ package com.dylan326.apus;
 
 /**
  * Created by dylan on 2017/5/22.
- * 方法一：有点不合理， 找了所有子串。*
- * 方法二：最长为源串长度n， 逐步按照n-- 来查找回文串， 第一个跳出
+ * 方法一：有点不合理， 找了所有子串。
  */
 public class A5LongestPalindromeStr {
 
@@ -74,7 +73,7 @@ public class A5LongestPalindromeStr {
      * 2、name最长回文的最大长度为l， 最小为1或者2. 即初始结果
      *
      * @param s
-     * @return
+     * @return 找出回文串
      */
     public String longestPalindrome3(String s) {
         if (s == null) {

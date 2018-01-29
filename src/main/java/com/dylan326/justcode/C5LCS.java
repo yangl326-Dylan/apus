@@ -9,7 +9,7 @@ public class C5LCS {
     public static void LCSprint(char[] a, char[] b) {
         int[][] result = new int[a.length+1][b.length+1];
 
-        for (int i = 1; i <=a.length; i++) { //主定律公式
+        for (int i = 1; i <=a.length; i++) { //状态转移方程
             for (int j = 1; j <= b.length; j++) {
                 if (a[i - 1] == b[j - 1]) {
                     result[i][j] = result[i - 1][j - 1] + 1;
