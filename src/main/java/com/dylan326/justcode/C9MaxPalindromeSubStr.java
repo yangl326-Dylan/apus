@@ -39,7 +39,7 @@ public class C9MaxPalindromeSubStr {
 
     /**
      *  方法二  源串为strA="abbacac",  反转的串 strB="cacabba" 这个问题等同于源串和反转串的最长公共子串问题
-     *  但是需要排除掉某些场景"abc123cba"和"abc321cba",可以最长公共子串加上是否回文判定就行
+     *  但是需要排除掉某些场景"abc123cba"和"abc321cba",可以最长公共子串,判定最长的逻辑加上是否回文判定就行
      *
      * @param str
      * @return
