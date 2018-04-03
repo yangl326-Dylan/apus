@@ -8,11 +8,9 @@ import java.util.List;
  * Created by dylan on 2017/9/21.
  */
 public class A15Sum3 {
-    public List<List<Integer>> threeSum(int[] nums) { // 题目
+    public List<List<Integer>> threeSum(int[] nums) { //
         return null;
     }
-
-    ;
 
     public static List<List<Integer>> sum3(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
@@ -58,5 +56,9 @@ public class A15Sum3 {
     public static void main(String[] args) {
         System.out.println(sum3(new int[]{0, 0, 0, 0, 0, 0}, 0));
         System.out.println(sum3(new int[]{-2, -1, 0, 1, 2, 3}, 0));
+    }
+
+    public static void calcNSum(List<List<Integer>> result , List<Integer> item, int depth, int target){
+
     }
 }

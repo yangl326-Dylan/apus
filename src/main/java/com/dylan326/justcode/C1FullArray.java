@@ -1,6 +1,8 @@
 package com.dylan326.justcode;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by dylan on 2017/6/5.
@@ -28,6 +30,7 @@ public class C1FullArray {
 
     }
 
+
     /**
      * 标准swap函数
      *
@@ -41,7 +44,30 @@ public class C1FullArray {
         a[i] = tmp;
     }
 
+    /**
+     * backtracking 回溯法 来处理全排列问题。 需要元素无重复
+     *
+     * @param current
+     * @param array
+     */
+    public static void calculate(List<Integer> current, int[] array, int position) {
+        if (position == array.length) { // 递归退出条件
+            System.out.println(current);
+        }
+        for (int k = 0; k < array.length; k++) {
+            int item = array[k];
+            if (current.contains(item)) {
+                continue;
+            }
+            current.add(item);
+            calculate(current, array, position + 1); // 从下一位置开始
+            current.remove(current.size() - 1);// //重要！！遍历过此节点后，要回溯到上一步，因此要把加入到结果中的此点去除掉！
+        }
+    }
+
+
     public static void main(String[] args) {
-        printFullArray(new int[]{1, 2, 3, 4}, 0, 3);
+//        printFullArray(new int[]{1, 2, 3, 3}, 0, 3);
+        calculate(new ArrayList<Integer>(), new int[]{1, 2, 3, 4}, 0);
     }
 }
