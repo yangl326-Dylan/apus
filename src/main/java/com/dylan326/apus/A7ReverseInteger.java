@@ -6,14 +6,14 @@ package com.dylan326.apus;
  */
 public class A7ReverseInteger {
     public int reverse(int x) {
-        long result = 0;
+        long i = 0; // 注意整数反转可能越界
         while (x != 0) {
-            result = result * 10 + x % 10;
-            x = x / 10;
+            i = i * 10 + x % 10; // 末尾进位
+            x = x / 10; //移除掉末尾
         }
-        if (result > Integer.MAX_VALUE || result < Integer.MIN_VALUE) {
-            result = 0;
+        if (i > Integer.MAX_VALUE || i < Integer.MIN_VALUE) {
+            i = 0;
         }
-        return (int) result;
+        return (int) i;
     }
 }
