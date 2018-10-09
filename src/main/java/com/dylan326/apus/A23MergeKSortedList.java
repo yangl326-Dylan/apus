@@ -6,6 +6,11 @@ package com.dylan326.apus;
 public class A23MergeKSortedList {
 
 
+    /**
+     * 分治思想
+     * @param lists
+     * @return
+     */
     public ListNode mergeKLists(ListNode[] lists) {
         if (lists.length == 0) {
             return null;
@@ -32,6 +37,12 @@ public class A23MergeKSortedList {
 
     }
 
+    /**
+     * merge2
+     * @param list1
+     * @param list2
+     * @return
+     */
     public ListNode merge2Lists(ListNode list1, ListNode list2) {
         ListNode node = new ListNode(0);
         ListNode head = node;
