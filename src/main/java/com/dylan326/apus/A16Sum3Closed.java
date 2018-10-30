@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * Created by dylan on 2017/9/21.
- * TODO
+ * TODO 写的太垃圾了
  */
 public class A16Sum3Closed {
     /**
