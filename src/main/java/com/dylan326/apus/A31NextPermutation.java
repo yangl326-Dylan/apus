@@ -8,7 +8,7 @@ import java.util.Arrays;
  * 1,4,3,2 -> 2,1,3,4
  * 1,3,4,2 -> 1,4,2,3
  */
-public class A10NextPermutation {
+    public class A31NextPermutation {
 
     public static int[] next(int[] num) {
         int tmp1 = -1;
@@ -20,8 +20,10 @@ public class A10NextPermutation {
                 break;
             }
         }
-        if (tmp1 == -1) {
-            return num;
+        if (tmp1 == -1) { // 找不到则为字典序的最大值， 下一个按照题要求为回到最小值
+//            return num;
+
+            return Arrays;
         }
         int delta = Integer.MAX_VALUE;
         int index2 = 0;

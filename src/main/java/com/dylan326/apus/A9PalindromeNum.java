@@ -42,10 +42,6 @@ public class A9PalindromeNum {
         return (x/result)%10;
     }
 
-//    public static boolean isPalindromeNum2(int x) {
-//
-//    }
-
     public static void main(String[] args) {
         System.out.println(isPalindrome1(13331));
     }
