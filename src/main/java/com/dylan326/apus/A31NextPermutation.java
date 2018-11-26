@@ -25,15 +25,15 @@ public class A31NextPermutation {
             int m = 0, n = nums.length - 1;
             while (m < n) {
                 int tmp = nums[m];
-                nums[m] = nums[n];
-                nums[n] = tmp;
+                nums[m++] = nums[n];
+                nums[n--] = tmp;
             }
             return nums;
         }
         int delta = Integer.MAX_VALUE;
         int index2 = 0;
         for (int i = index1 + 1; i < nums.length; i++) {//找到比tmp1大的最小数
-            if (nums[i] >= tmp1 && nums[i] - tmp1 < delta) {
+            if (nums[i] > tmp1 && nums[i] - tmp1 < delta) {
                 delta = nums[i] - tmp1;
                 index2 = i;
 
@@ -57,8 +57,8 @@ public class A31NextPermutation {
     }
 
     public static void main(String[] args) {
-        System.out.println(Arrays.toString(next(new int[]{4, 3, 2, 1})));
-        System.out.println(Arrays.toString(next(new int[]{1, 3, 2, 4})));
+        System.out.println(Arrays.toString(next(new int[]{1,1})));
+        System.out.println(Arrays.toString(next(new int[]{1,5,1})));
     }
 
 }
