@@ -7,38 +7,39 @@ public class A23MergeKSortedList {
 
 
     /**
-     * 分治思想
+     * 分治+递归
      * @param lists
      * @return
      */
     public ListNode mergeKLists(ListNode[] lists) {
-        if (lists.length == 0) {
+
+        if (lists.length == 0) {// 边界值
             return null;
-        } else if (lists.length == 1) {
+        } else if (lists.length == 1) {// 边界值
             return lists[0];
-        } else if (lists.length == 2) {
+        } else if (lists.length == 2) {// 边界值
             return merge2Lists(lists[0], lists[1]);
         } else {
             ListNode[] params;
-            if (lists.length % 2 == 0) {
+            if (lists.length % 2 == 0) { // 偶数个情况
                 params = new ListNode[lists.length / 2];
                 for (int k = 0; k < params.length; k++) {
                     params[k] = merge2Lists(lists[k], lists[lists.length - k - 1]);
                 }
-            } else {
+            } else { // 偶数个情况
                 params = new ListNode[lists.length / 2 + 1];
                 for (int k = 0; k < params.length - 1; k++) {
                     params[k] = merge2Lists(lists[k], lists[lists.length - k - 1]);
                 }
                 params[params.length - 1] = lists[lists.length / 2];
             }
-            return mergeKLists(params);
+            return mergeKLists(params); // 递归处理合并
         }
 
     }
 
     /**
-     * merge2
+     * merge2 合并两链表
      * @param list1
      * @param list2
      * @return
@@ -87,6 +88,6 @@ public class A23MergeKSortedList {
         ListNode c = new ListNode(2);
         c.next = new ListNode(6);
 
-        System.out.println(tmp.mergeKLists(new ListNode[]{a, b, c}));
+        tmp.mergeKLists(new ListNode[]{a, b, c});
     }
 }
