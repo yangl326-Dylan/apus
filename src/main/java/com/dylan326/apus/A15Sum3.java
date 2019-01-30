@@ -81,7 +81,7 @@ public class A15Sum3 {
      * @param start
      */
     public static void sum3Backtracking(Map<List<Integer>, List<Integer>> result, List<Integer> item, int[] nums, int remain, int start) {
-        if (remain < nums[0]) {
+        if (nums.length> 0 && remain < minArraySum(nums)) {
             return;
         } else if (remain == 0 && item.size() == 3) { // 符合结果值
             result.put(new ArrayList<>(item), new ArrayList<>(item)); // 按照题目要求，简单用hashmap去重复数组
@@ -91,6 +91,29 @@ public class A15Sum3 {
                 sum3Backtracking(result, item, nums, remain - nums[i], i + 1); //* ② 之前的目标值为remain-nums[i]
                 item.remove(item.size() - 1); // * ③ 回退元素
             }
+        }
+    }
+
+    /**
+     * 计算出当前最小值， 退出递归的条件，减少递归次数
+     * @param nums
+     * @return
+     */
+    private static int minArraySum(int[] nums) {
+        int start = 0;
+        if (start >= nums.length) {
+            return Integer.MAX_VALUE;
+        }
+        if (nums[start] >= 0) {
+            return nums[start];
+        } else {
+            int min = 0;
+            for (int i = start; i < nums.length; i++) {
+                if (nums[i] < 0 && i < 4) {
+                    min += nums[i];
+                }
+            }
+            return min;
         }
     }
 
