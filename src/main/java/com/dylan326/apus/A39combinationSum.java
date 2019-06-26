@@ -16,19 +16,27 @@ public class A39combinationSum {
         return list;
     }
 
+    /**
+     *
+     * @param list 结果集合
+     * @param tempList 结果
+     * @param nums 候选数组
+     * @param remain 目标值在当前循环或者递归剩下值，当前题目及target（胡总恶化上次的remain）-nums[i]
+     * @param start 回溯开始的起始位置
+     */
     private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int remain, int start) {
         if (remain < 0) {
-//            System.out.println("-----illegal="+Arrays.toString(tempList.toArray()));
+            System.out.println("-----illegal="+Arrays.toString(tempList.toArray()));
             return;
         }
         else if (remain == 0) { // 结果条件
-//            System.out.println("found="+Arrays.toString(tempList.toArray()));
-            list.add(new ArrayList<>(tempList)); //  新数组对象保留结果
+            System.out.println("found="+Arrays.toString(tempList.toArray()));
+            list.add(new ArrayList<>(tempList)); //  注意新数组对象保留结果， 因为tmplist下次会被使用修改
         } else {
             for (int i = start; i < nums.length; i++) {
                 tempList.add(nums[i]);
-//                System.out.println("=add="+nums[i]+",array="+Arrays.toString(tempList.toArray()));
-//                backtrack(list, tempList, nums, remain - nums[i], i+1);// start 参数取决于包不包含自己
+                System.out.println("=add="+nums[i]+",array="+Arrays.toString(tempList.toArray()));
+//                backtrack(list, tempList, nums, remain - nums[i], i + 1);// start 参数取决于包不包含自己
                 backtrack(list, tempList, nums, remain - nums[i], i);// 回溯开始位置从当前元素开始
                 tempList.remove(tempList.size() - 1);
             }
