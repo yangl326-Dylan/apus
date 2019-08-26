@@ -29,7 +29,9 @@ public class C9MaxPalindromeSubStr {
                     if (j == i + 1) { // 偶数个数初始场景
                         result[i][j] = 2;
                     } else {
-                        result[i][j] = result[i + 1][j - 1] + 2;
+                        if (result[i + 1][j - 1] > 0) {
+                            result[i][j] = result[i + 1][j - 1] + 2;
+                        }
                     }
                 }
                 if (result[i][j] > max) {
@@ -37,6 +39,12 @@ public class C9MaxPalindromeSubStr {
                     System.out.println(String.format("index,i=%d,j=%d, max=%d", i, j,max));
                 }
             }
+        }
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                System.out.print(result[i][j]+" ");
+            }
+            System.out.print("\n");
         }
         return max;
     }
@@ -65,6 +73,6 @@ public class C9MaxPalindromeSubStr {
 
 
     public static void main(String[] args) {
-        System.out.println(maxSubStr("aaaa"));
+        System.out.println(maxSubStr("abcbcadfggfdhjjklhj"));
     }
 }

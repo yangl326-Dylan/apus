@@ -116,6 +116,6 @@ public class A5LongestPalindromeStr {
 
     public static void main(String[] args) {
         A5LongestPalindromeStr a5 = new A5LongestPalindromeStr();
-        System.out.println(a5.longestPalindrome3(""));
+        System.out.println(a5.longestPalindrome3("abcbcadfggfdhjjklhj"));
     }
 }
