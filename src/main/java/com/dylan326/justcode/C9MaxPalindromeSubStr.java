@@ -73,6 +73,6 @@ public class C9MaxPalindromeSubStr {
 
 
     public static void main(String[] args) {
-        System.out.println(maxSubStr("abcbcadfggfdhjjklhj"));
+        System.out.println(maxSubStr("abbacac"));
     }
 }
