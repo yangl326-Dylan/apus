@@ -119,10 +119,10 @@ public class A15Sum3 {
 
 
     public static void main(String[] args) {
-        System.out.println(sum3(new int[]{0, 0, 0, 0, 0, 0}, 0));
-        System.out.println(sum3New(new int[]{0, 0, 0, 0, 0, 0}, 0));
+//        System.out.println(sum3(new int[]{0, 0, 0, 0, 0, 0}, 0));
+//        System.out.println(sum3New(new int[]{0, 0, 0, 0, 0, 0}, 0));
         //
-        System.out.println(sum3(new int[]{-2, -1, 0, 1, 2, 3}, 0));
+//        System.out.println(sum3(new int[]{-2, -1, 0, 1, 2, 3}, 0));
         System.out.println(sum3New(new int[]{-2, -1, 0, 1, 2, 3}, 0));
     }
 }
