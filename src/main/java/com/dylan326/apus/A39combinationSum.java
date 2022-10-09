@@ -7,6 +7,13 @@ import java.util.List;
 /**
  * 条件都是正数，backtracking 模式， 之前的三数和或者三数靠近和， 回溯模式也能解决
  * 回溯解决的一类问题
+ * Combination Sum[1]
+ Given a set of candidate numbers (candidates) (without duplicates) and a target number (target), find all unique combinations in candidates where the candidate numbers sums to target.
+ The same repeated number may be chosen from candidates unlimited number of times.
+ Note:
+ All numbers (including target) will be positive integers.
+ The solution set must not contain duplicate combinations.
+ Example 1: Input: candidates = [2,3,6,7], target = 7, A solution set is: [ [7], [2,2,3] ]
  */
 public class A39combinationSum {
 
