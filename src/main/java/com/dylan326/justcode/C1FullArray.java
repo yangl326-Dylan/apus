@@ -19,6 +19,7 @@ public class C1FullArray {
 
     /**
      * backtracking 的结果集分为子集树 还是排列树， 这两套的代码结构模式有点不一样， 对于全排列如果使用回溯模式的话，结果集为排列树
+     *
      * @param a
      * @param start
      * @param end

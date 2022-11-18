@@ -28,7 +28,7 @@ public class A39combinationSum {
      * @param list 结果集合
      * @param tempList 结果
      * @param nums 候选数组
-     * @param remain 目标值在当前循环或者递归剩下值，当前题目及target（胡总恶化上次的remain）-nums[i]
+     * @param remain 目标值在当前循环或者递归剩下值，当前题目即target（或者上次的remain）-nums[i]
      * @param start 回溯开始的起始位置
      */
     private void backtrack(List<List<Integer>> list, List<Integer> tempList, int[] nums, int remain, int start) {
@@ -52,6 +52,6 @@ public class A39combinationSum {
 
     public static void main(String[] args) {
         A39combinationSum a39combinationSum = new A39combinationSum();
-        System.out.println(Arrays.toString(a39combinationSum.combinationSum(new int[]{7, 2, 3, 4}, 7).toArray()));
+        System.out.println(Arrays.toString(a39combinationSum.combinationSum(new int[]{7, 2, 3, 4}, 8).toArray()));
     }
 }
