@@ -14,7 +14,7 @@ DEFINE_bool(n, true, "open n args, default true");
 DEFINE_validator(port, &ValidatePort);// inject validator
 
 /**
- * gflags 工具库学习
+ * google gflags 工具库学习
  * main test. usage doc: https://gflags.github.io/gflags/
 */
 int main(int argc, char **argv)
