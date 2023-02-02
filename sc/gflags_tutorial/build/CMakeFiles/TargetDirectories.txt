@@ -1,3 +1,0 @@
-/Users/dylan/code/apus/sc/gflags_tutorial/build/CMakeFiles/rebuild_cache.dir
-/Users/dylan/code/apus/sc/gflags_tutorial/build/CMakeFiles/edit_cache.dir
-/Users/dylan/code/apus/sc/gflags_tutorial/build/CMakeFiles/gflags_test.dir

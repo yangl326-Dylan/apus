@@ -7,5 +7,6 @@ target
 *.iml
 certs
 logs
-*/build/*
+*/boost_/build/*
+*/gflags_/build/*
 */.vscode/*
