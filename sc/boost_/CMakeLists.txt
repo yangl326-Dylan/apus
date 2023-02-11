@@ -5,6 +5,8 @@ project(boost_tutorials)
 
 SET(ACC_SRC_ _01_accumulators.cc)
 SET(STR_ALOG_ _02_str_alogorithm.cc)
+SET(CHRONO_ _06_chrono.cc)
+SET(CB_ _07_circular_buffer.cc)
 
 SET(FOREACH_ _13_foreach.cc)
 SET(LAMDA_SRC_ _18_lamda.cc)
@@ -29,6 +31,8 @@ find_package(Boost REQUIRED)
 # add the executable
 add_executable(_acc ${ACC_SRC_})
 add_executable(_str_alog ${STR_ALOG_})
+add_executable(_chrono ${CHRONO_})
+add_executable(_circular_buffer ${CB_})
 
 add_executable(_foreach ${FOREACH_})
 add_executable(_lamda ${LAMDA_SRC_})
@@ -36,6 +40,8 @@ add_executable(_lamda ${LAMDA_SRC_})
 # target_link_libraries(${PROJECT_NAME} ${GFLAGS_LIB})
 target_link_libraries(_acc Boost::boost)
 target_link_libraries(_str_alog Boost::boost)
+target_link_libraries(_chrono Boost::boost)
+target_link_libraries(_circular_buffer Boost::boost)
 
 target_link_libraries(_foreach Boost::boost)
 target_link_libraries(_lamda Boost::boost)
