@@ -8,5 +8,6 @@ target
 certs
 logs
 */boost_/build/*
+*/stl/build/*
 */gflags_/build/*
 */.vscode/*
