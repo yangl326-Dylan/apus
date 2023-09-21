@@ -1,5 +1,7 @@
 package com.dylan326.apus;
 
+import java.util.Arrays;
+
 /**
  * Given a sorted array nums, remove the duplicates in-place such that each element appear only once and return the new length.
  * <p>
@@ -12,7 +14,7 @@ public class A26RemoveDuplicates {
      * @param nums
      * @return
      */
-    public int removeDuplicates(int[] nums) {
+    public static int removeDuplicates(int[] nums) {
         int counter = 0;
         if (nums.length == 0) {
             return counter;
@@ -29,6 +31,8 @@ public class A26RemoveDuplicates {
     }
 
     public static void main(String[] args) {
-
+        int[] tmp = new int[]{1,2,2,3,3,3,3,4};
+        System.out.println(removeDuplicates(tmp));
+        System.out.println(Arrays.toString(tmp));
     }
 }

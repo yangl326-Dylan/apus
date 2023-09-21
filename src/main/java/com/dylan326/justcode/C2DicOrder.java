@@ -1,5 +1,7 @@
 package com.dylan326.justcode;
 
+import java.util.Arrays;
+
 /**
  * Created by dylan on 2017/6/6.
  * 字典序下个序列
@@ -57,6 +59,7 @@ public class C2DicOrder {
     }
 
     public static void main(String[] args) {
-        System.out.println(nextOrder(new int[]{1,2,3,4}));
+        System.out.println(Arrays.toString(nextOrder(new int[]{1,2,3,4})));
+        System.out.println(Arrays.toString(nextOrder(new int[]{1,2,6,5,4,3,0})));
     }
 }

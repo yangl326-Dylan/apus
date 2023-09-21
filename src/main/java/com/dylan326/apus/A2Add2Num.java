@@ -65,7 +65,46 @@ public class A2Add2Num {
     }
 
     public static void main(String[] args) {
+        ListNode headOld = new ListNode(1);
+        headOld.next = new ListNode(2);
+        headOld.next.next = new ListNode(3);
+        headOld.next.next.next = new ListNode(4);
+        print(headOld);
+// 0->1->2->end
+        ListNode currentNode = headOld;
+        ListNode currentHead = headOld;
+        ListNode next1 = currentNode.next;
+        ListNode next2 = currentNode.next.next;
+        if (next2 == null) { // 2个元素
+            next1.next = currentNode;
+            currentNode.next = null;
+            print(next1);
+            return;
+        } else {
+            currentHead = next1;
+            next1.next = headOld;
+            currentNode = next2;
+            headOld.next = null;
+        }
+        print(currentHead);
+        while (currentNode != null) {
+            ListNode tmp = currentNode.next;
+            currentNode.next = currentHead;
+            currentHead = currentNode;
+            currentNode = tmp;
+        }
+        print(currentHead);
 
+
+    }
+
+    private static void print(ListNode head) {
+        System.out.print("head ");
+        while (head != null) {
+            System.out.print(String.valueOf(head.val) + "->");
+            head = head.next;
+        }
+        System.out.println("end");
     }
 }
 

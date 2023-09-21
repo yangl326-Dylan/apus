@@ -1,6 +1,5 @@
 package com.dylan326.justcode;
 
-import com.dylan326.apus.A19RemoveNthNodeEnd.ListNode;
 
 /**
  * Created by dylan on 2019/11/11.
@@ -9,18 +8,36 @@ import com.dylan326.apus.A19RemoveNthNodeEnd.ListNode;
  */
 public class C11ReverseLinkedNode {
 
-    public ListNode reverseLinkNode(ListNode sourceNode) {
-        return  null;
+    public static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
+
+    public static ListNode reverseLinkNode(ListNode sourceNode) {
+        ListNode resultHead = new ListNode(0);
+        while (sourceNode != null) {
+            ListNode tmp = resultHead.next;
+            ListNode tmpHead = sourceNode.next;
+            resultHead.next = sourceNode;
+            sourceNode.next = tmp;
+            sourceNode = tmpHead;
+        }
+        return resultHead.next;
     }
 
     public static void main(String[] args) {
-        switch (1) {
-            case 1:
-                System.out.println(1111);
-            default:
-                System.out.println(222);
-        }
-
+        ListNode listNode1 = new ListNode(1);
+        ListNode listNode2 = new ListNode(2);
+        ListNode listNode3 = new ListNode(3);
+        ListNode listNode4 = new ListNode(4);
+        listNode1.next = listNode2;
+        listNode2.next = listNode3;
+        listNode3.next = listNode4;
+        System.out.println(reverseLinkNode(listNode4).val);
 
     }
 }

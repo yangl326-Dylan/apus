@@ -14,7 +14,7 @@ public class C5LCS {
                 if (a[i - 1] == b[j - 1]) {
                     result[i][j] = result[i - 1][j - 1] + 1;
                 } else {
-                    result[i][j] = result[i][j - 1] > result[i - 1][j] ? result[i][j - 1] : result[i - 1][j];
+                    result[i][j] = Math.max(result[i][j - 1], result[i - 1][j]);
                 }
             }
         }
