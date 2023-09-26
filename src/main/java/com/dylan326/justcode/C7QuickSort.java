@@ -25,7 +25,7 @@ public class C7QuickSort {
                 }
                 if (i < j) { // i<j 交换ij位置的值，继续按此方法循环找ij位置
                     swap(a, i, j);
-                }else if(i==j){
+                } else if (i == j) {
                     swap(a, m, i);
                 }
             } // 以上定位到枢纽元素pivot的索引位置i。找到后固定改位置，对i左边和右边的同样方法处理
@@ -47,9 +47,32 @@ public class C7QuickSort {
         a[j] = tmp;
     }
 
+    public static void BubbleSorts(int[] a) {
+        for (int i = a.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (a[j] > a[j + 1]) {
+                    swap(a, j, j + 1);
+                }
+            }
+        }
+        System.out.println(Arrays.toString(a));
+    }
+
+    public static void SelectSorts(int[] a) {
+        for (int i = a.length - 1; i >= 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (a[j] > a[i]) {
+                    swap(a, i, j);
+                }
+            }
+        }
+        System.out.println(Arrays.toString(a));
+    }
+
     public static void main(String[] args) {
-        int[] a = {6,2,1,8,7,4,6,9};
-        quickSort(a, 0, a.length - 1);
+        int[] a = {6, 2, 1, 8, 7, 4, 6, 9};
+//        quickSort(a, 0, a.length - 1);
+        SelectSorts(a);
         System.out.println(Arrays.toString(a));
     }
 }

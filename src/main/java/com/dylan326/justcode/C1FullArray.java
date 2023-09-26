@@ -1,7 +1,9 @@
 package com.dylan326.justcode;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.List;
 
 /**
@@ -26,16 +28,44 @@ public class C1FullArray {
      */
     public static void printFullArray(int[] a, int start, int end) {
         if (start == end) {
-            System.out.println(Arrays.toString(a)); // 打印数组
-            // 课外出了是否重复结果等
+            System.out.println(Arrays.toString(a));
         } else {
-            for (int i = start; i <= end; i++) {// start  end 数组索引位置
-                swap(a, start, i);// 从index=0开始交换
+            for (int i = start; i <= end; i++) {
+                swap(a, start, i);
                 printFullArray(a, start + 1, end);
                 swap(a, start, i);// 数据需要复原；可以看某次递归深度的执行，即之后的每个元素交换到前面， 所以每次都是初始的复原位置开始
             }
         }
 
+    }
+
+    public static void printFullArray(int[] a) {
+        Deque<Integer> tmp = new ArrayDeque<>();
+    }
+
+    public static List<List<Integer>> subsetsWithDup(int[] nums) {
+        Arrays.sort(nums);
+        boolean jud[] = new boolean[nums.length];
+        List<List<Integer>> valueList = new ArrayList<List<Integer>>();
+        dfs(nums, -1, valueList, jud);
+        return valueList;
+    }
+
+    private static void dfs(int[] nums, int index, List<List<Integer>> valueList, boolean[] jud) {
+        List<Integer> list = new ArrayList<Integer>();
+        for (int i = 0; i < nums.length; i++) {
+            if (jud[i]) {
+                list.add(nums[i]);
+            }
+        }
+        valueList.add(list);
+        for (int i = index + 1; i < nums.length; i++) {//第一个元素 或 当前元素不和前面相同  或者相同且前面被使用了可以继续进行
+            if ((i == 0) || (nums[i] != nums[i - 1]) || (i > 0 && jud[i - 1] && nums[i] == nums[i - 1])) {
+                jud[i] = true;
+                dfs(nums, i, valueList, jud);
+                jud[i] = false;
+            }
+        }
     }
 
 
@@ -54,6 +84,6 @@ public class C1FullArray {
 
 
     public static void main(String[] args) {
-        printFullArray(new int[]{1, 2, 3, 3}, 0, 3);
+        printFullArray(new int[]{1, 2, 3, 4}, 0, 3);
     }
 }
