@@ -44,7 +44,7 @@ public class A23MergeKSortedList {
      * @param list2
      * @return
      */
-    public ListNode merge2Lists(ListNode list1, ListNode list2) {
+    public static ListNode merge2Lists(ListNode list1, ListNode list2) {
         ListNode node = new ListNode(0);
         ListNode head = node;
         while (true) {
@@ -75,6 +75,37 @@ public class A23MergeKSortedList {
         return head.next;
     }
 
+    public static ListNode merge2(ListNode list1, ListNode list2){
+        ListNode tmpNode = new ListNode(0);
+        ListNode head = tmpNode;
+        while (true){
+            if(list1 == null){
+                tmpNode.next = list2;
+                break;
+            }
+            if(list2 == null){
+                tmpNode.next = list1;
+                break;
+            }
+            if(list1.val < list2.val){
+                tmpNode.next = new ListNode(list1.val);
+                list1 = list1.next;
+                tmpNode = tmpNode.next;
+            } else if (list1.val == list2.val) {
+                tmpNode.next = new ListNode(list1.val);
+                tmpNode.next.next = new ListNode(list2.val);
+                tmpNode = tmpNode.next.next;
+                list1 = list1.next;
+                list2 = list2.next;
+            } else{
+                tmpNode.next = new ListNode(list2.val);
+                list2 = list2.next;
+                tmpNode = tmpNode.next;
+            }
+        }
+        return head.next;
+    }
+
     public static void main(String[] args) {
         A23MergeKSortedList tmp = new A23MergeKSortedList();
         ListNode a = new ListNode(1);
@@ -89,5 +120,12 @@ public class A23MergeKSortedList {
         c.next = new ListNode(6);
 
         tmp.mergeKLists(new ListNode[]{a, b, c});
+
+        ListNode result = merge2(a,b);
+        while (result !=null){
+            System.out.print(result.val);
+            System.out.print("-");
+            result = result.next;
+        }
     }
 }
