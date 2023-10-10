@@ -13,7 +13,7 @@ public class Solution70 {
         int[] result = new int[45];
         result[0] = 1;
         result[1] = 2;
-        for (int i = 3; i < result.length; i++) {
+        for (int i = 2; i < result.length; i++) {
             result[i] = result[i - 1] + result[i - 2];
         }
         return result[n - 1];
@@ -21,5 +21,6 @@ public class Solution70 {
 
     public static void main(String[] args) {
         System.out.println(climbStairs(45));
+        System.out.println(climbStairs2(45));
     }
 }
