@@ -1,5 +1,7 @@
 package com.dylan326.justcode;
 
+import org.apache.thrift.utils.StringUtils;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -12,7 +14,8 @@ public class C10StrPattern {
     /**
      * 生成模式串next函数，函数作用为主串对比忽略比较的位置记录
      * 表示的含义当前位置，真前缀和真后缀相同的个数， 正因为相同，所以已经比较过的可以根据这个信息直接跳到比较位置
-     * @param pattern 匹配模式串
+     *
+     * @param pattern 匹配模式串 abcabc
      * @return
      */
     private static int[] genNextArray(String pattern) {
@@ -29,6 +32,67 @@ public class C10StrPattern {
                 result[i] = 0;
             }
 
+        }
+        return result;
+    }
+
+    /**
+     * 实际这个相同真前缀和真后缀。  一维的 DP 问题
+     *
+     * @param pattern
+     * @return
+     */
+    private static int[] genNextArray2(String pattern) {
+        if (pattern == null || pattern.length() == 0) {
+            return new int[]{};
+        }
+        char[] p = pattern.toCharArray();
+        int[] result = new int[p.length];
+        result[0] = 0;
+        for (int i = 1; i < p.length; i++) {
+            if (p[i] == p[result[i - 1]]) {
+                result[i] = result[i - 1] + 1;
+            } else {
+                result[i] = 0;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * abaaabc aba
+     *
+     * @param str
+     * @param pattern
+     * @return
+     */
+    public static List<String> findPosition2(String str, String pattern) {
+        List<String> result = new ArrayList<>();
+        if (str == null || pattern == null) {
+            return result;
+        }
+        int[] next = genNextArray2(pattern);
+        char[] s = str.toCharArray();
+        char[] p = pattern.toCharArray();
+        int start = 0;
+        for (int i = 0; i < s.length; i++) {
+            for (int j = 0; j < p.length; j++) {
+                if (i + j > s.length - 1) {
+                    return result;
+                }
+                if (s[i + j] == p[j]) {
+                    if (j == 0) {
+                        start = i; // maybe
+                    }
+                    if (j == (p.length - 1)) {
+                        result.add(String.format("%s-%s", start, i + j));
+                        break;
+                    }
+                } else {
+                    i = i + next[j];
+                    break;
+                }
+            }
         }
         return result;
     }
@@ -70,12 +134,46 @@ public class C10StrPattern {
         return result;
     }
 
+    /**
+     * 暴力
+     *
+     * @param str
+     * @param pattern
+     * @return
+     */
+    public static List<String> findPosition3(String str, String pattern) {
+        char[] s = str.toCharArray();
+        char[] p = pattern.toCharArray();
+        List<String> result = new ArrayList<>();
+        int tmpStart = 0;
+        for (int i = 0; i < s.length; i++) {
+            for (int j = 0; j < p.length; j++) {
+                if (i + j > s.length - 1) {
+                    return result;
+                }
+                if (s[i] == p[0]) {
+                    tmpStart = i;
+                }
+                if (s[i + j] == p[j]) {
+                    if (j == p.length - 1) {
+                        result.add(String.format("%s-%s", tmpStart, i+j));
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
 
     public static void main(String[] args) {
         //示例
         //abababca  原始串S   pattern串aba
         //01234567  索引值
         //00123401  next() 函数，剪枝跳跃的信息表
-        System.out.println(Arrays.toString(findPosition("abababca", "aba").toArray()));
+        System.out.println(Arrays.toString(findPosition("aacaa", "aa").toArray()));
+        System.out.println(Arrays.toString(findPosition2("aacaa", "aa").toArray()));
+        System.out.println(Arrays.toString(findPosition3("aacaa", "aa").toArray()));
     }
 }
