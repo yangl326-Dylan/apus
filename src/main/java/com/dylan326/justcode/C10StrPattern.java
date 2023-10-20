@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
+ *  KMP
  * Created by dylan on 2019/10/17.
  */
 public class C10StrPattern {
