@@ -2,8 +2,6 @@ package com.dylan326.justcode;
 
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Deque;
 import java.util.List;
 import java.util.Queue;
 import java.util.Stack;
@@ -13,31 +11,68 @@ import java.util.Stack;
  */
 public class C20FindLCA {
 
+
+    public static Node findLCA2(Node root, Node n1, Node n2) {
+        if (root == null || root == n1 || root == n2) {
+            return root;
+        }
+        Node left = findLCA(root.left, n1, n2);
+        Node right = findLCA(root.right, n1, n2);
+        if (left == null && right != null) {
+            return n2;
+        } else if (left != null && right == null) {
+            return n1;
+        } else {
+            return root;
+        }
+    }
+
     public static Node findLCA(Node root, Node n1, Node n2) {
         List<Node> tmp1 = new ArrayList<>();
         List<Node> tmp2 = new ArrayList<>();
         findN(root, n1, tmp1);
-        findN(root, n1, tmp2);
+        findN(root, n2, tmp2);
 
-        int n = Math.max(tmp1.size(), tmp2.size());
+        int n = Math.min(tmp1.size(), tmp2.size());
+        Node result = null;
         for (int i = 0; i < n; i++) {
-
+            if (tmp1.get(i) == tmp2.get(i)) {
+                result = tmp1.get(i);
+            } else {
+                break;
+            }
 
         }
-        return null;
+        return result;
 
     }
 
     public static void findN(Node root, Node target, List<Node> record) {
         Stack<Node> result = new Stack<Node>();
         Node p = root;
-        while (p != null) {
+        Node pre = null;
+        while (p != null || result.size() != 0) {
             while (p != null) {
                 result.push(p);
                 p = p.left;
             }
+            if (result.size() != 0) {
+                Node tmp = result.pop();
+                if (tmp.right == null || tmp.right == pre) {
+                    pre = tmp;
+                    p = null;
+                    if (tmp == target) {
+                        break;
+                    }
+                } else {
+                    result.push(tmp);
+                    p = tmp.right;
+                }
+            }
 
         }
+        record.addAll(result);
+        record.add(target);
     }
 
     public static void main(String[] args) {
@@ -74,6 +109,14 @@ public class C20FindLCA {
         inOrderNoRe(root);
         System.out.println();
         postOrderNoRe(root);
+
+        System.out.println("---------");
+        System.out.println(findLCA(root, n1, n2));
+        System.out.println(findLCA2(root, n1, n2));
+        System.out.println(findLCA(root, n3, n3));
+        System.out.println(findLCA(root, n2, n3));
+        System.out.println(findLCA(root, n3, n4));
+
     }
 
     public static void preOrder(Node root) {
@@ -145,7 +188,7 @@ public class C20FindLCA {
             }
             if (result.size() != 0) {
                 Node tmp = result.pop();
-                if (tmp.right == null || pre == tmp.right) {
+                if (tmp.right == null || pre == tmp.right) { // 或者右节点被访问过，才打印临时root
                     System.out.print(tmp + "->");
                     pre = tmp;
                     p = null; //
