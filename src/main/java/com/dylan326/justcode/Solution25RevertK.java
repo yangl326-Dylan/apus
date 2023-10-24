@@ -1,7 +1,5 @@
 package com.dylan326.justcode;
 
-import jdk.nashorn.internal.runtime.ListAdapter;
-
 import java.util.Arrays;
 
 /**
@@ -41,16 +39,15 @@ public class Solution25RevertK {
         if (head == null || head.next == null) {
             return head;
         }
-        ListNode tmpHead = new ListNode(head);
-        tmpHead.next = null;
-        while (head.next != null) {
-            ListNode tmp = new ListNode(head.next);
-
-            tmp.next = tmpHead;
-            tmpHead = tmp;
-            head = head.next;
+        ListNode pre = null;
+        ListNode curr = head;
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = pre;
+            pre = curr;
+            curr = next;
         }
-        return tmpHead;
+        return pre;
     }
 
     public static ListNode[] reverseLinkedList2(ListNode head) {
@@ -81,7 +78,8 @@ public class Solution25RevertK {
         l2.next = l3;
         l3.next = l4;
         l4.next = l5;
-        System.out.println(Arrays.toString(reverseLinkedList2(l1)));
+//        System.out.println(Arrays.toString(reverseLinkedList2(l1)));
+        System.out.println(reverseLinkedList(l1));
 //        System.out.println(reverseLinkedList(l4));
 //        System.out.println(reverseLinkedList(l5));
     }
