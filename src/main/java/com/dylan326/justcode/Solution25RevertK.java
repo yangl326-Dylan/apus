@@ -15,7 +15,44 @@ public class Solution25RevertK {
      * @return
      */
     public static ListNode reverseKGroup(ListNode head, int k) {
-        return null;
+        if (head == null || checkSmallerThanK(head, k)) {
+            return head;
+        }
+        ListNode[] firstResult = reverseLinkedList(head, k);
+        ListNode tmpHead = firstResult[0];
+        ListNode tmpTail = firstResult[1];
+        ListNode tmpNextHead = firstResult[2];
+        while (!checkSmallerThanK(tmpNextHead, k)) {
+            ListNode[] tmpResult = reverseLinkedList(tmpNextHead, k);
+            tmpTail.next = tmpResult[0];
+            tmpTail = tmpResult[1];
+            tmpNextHead = tmpResult[2];
+        }
+
+        return tmpHead;
+    }
+
+    public static ListNode[] reverseLinkedList(ListNode head, int k) {
+        ListNode pre = null;
+        ListNode curr = head;
+        ListNode tail = null;
+        ListNode nextHead = null;
+        int counter = 0;
+        while (curr != null) {
+            ListNode next = curr.next;
+            curr.next = pre;
+            pre = curr;
+            curr = next;
+            if (counter == 1) {
+                tail = curr;
+            }
+            if (++counter >= k) {
+//                nextHead = new ListNode(curr.next);
+                break;
+            }
+        }
+        nextHead = curr;
+        return new ListNode[]{pre, tail, nextHead};
     }
 
     private static boolean checkSmallerThanK(ListNode head, int k) {
@@ -52,19 +89,18 @@ public class Solution25RevertK {
 
     public static ListNode[] reverseLinkedList2(ListNode head) {
         if (head == null || head.next == null) {
-            return new ListNode[]{head,head};
+            return new ListNode[]{head, head};
         }
         ListNode tmpHead = new ListNode(head);
         tmpHead.next = null;
         ListNode tailNode = new ListNode(tmpHead);
         while (head.next != null) {
             ListNode tmp = new ListNode(head.next);
-
             tmp.next = tmpHead;
             tmpHead = tmp;
             head = head.next;
         }
-        return new ListNode[]{tmpHead,tailNode};
+        return new ListNode[]{tmpHead, tailNode};
     }
 
 
@@ -79,7 +115,7 @@ public class Solution25RevertK {
         l3.next = l4;
         l4.next = l5;
 //        System.out.println(Arrays.toString(reverseLinkedList2(l1)));
-        System.out.println(reverseLinkedList(l1));
+        System.out.println(reverseLinkedList(l1, 3));
 //        System.out.println(reverseLinkedList(l4));
 //        System.out.println(reverseLinkedList(l5));
     }
