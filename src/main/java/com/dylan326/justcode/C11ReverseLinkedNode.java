@@ -44,8 +44,9 @@ public class C11ReverseLinkedNode {
     }
 
     /**
-     * Given 1->2->3->4->5->6
-     *  理解度更高
+     * Given v- 1->2->3->4->5->6
+     * 理解度更高
+     *
      * @param sourceNode
      * @return
      */
@@ -55,11 +56,12 @@ public class C11ReverseLinkedNode {
         ListNode curr = sourceNode;
         while (curr != null) {
             ListNode tmp = virHead.next;
-            ListNode currNext = curr.next;
-            virHead.next = curr;
-            curr.next = tmp;
+            ListNode next = curr.next;
 
-            curr = currNext;// 循环
+            curr.next = tmp;
+            virHead.next = curr;
+
+            curr = next;
         }
         return virHead.next;
     }
@@ -96,7 +98,7 @@ public class C11ReverseLinkedNode {
         listNode2.next = listNode3;
         listNode3.next = listNode4;
 //        System.out.println(reverseLinkNode(listNode1).val);
-        System.out.println(Arrays.toString(reverseLinkNode2(listNode1,2)));
+        System.out.println(Arrays.toString(reverseLinkNode2(listNode1, 2)));
 
     }
 }

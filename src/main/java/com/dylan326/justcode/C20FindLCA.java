@@ -19,9 +19,9 @@ public class C20FindLCA {
         Node left = findLCA(root.left, n1, n2);
         Node right = findLCA(root.right, n1, n2);
         if (left == null && right != null) {
-            return n2;
+            return right;
         } else if (left != null && right == null) {
-            return n1;
+            return left;
         } else {
             return root;
         }
@@ -111,8 +111,8 @@ public class C20FindLCA {
         postOrderNoRe(root);
 
         System.out.println("---------");
-        System.out.println(findLCA(root, n1, n2));
-        System.out.println(findLCA2(root, n1, n2));
+        System.out.println(findLCA(root, n3, n2));
+        System.out.println(findLCA2(root, n3, n2));
         System.out.println(findLCA(root, n3, n3));
         System.out.println(findLCA(root, n2, n3));
         System.out.println(findLCA(root, n3, n4));
@@ -176,7 +176,31 @@ public class C20FindLCA {
             System.out.print(root + "->");
         }
     }
+    public static void postOrderNoRe2(Node root) {
+        Stack<Node> tmp = new Stack<>();
+        Node current = root;
+        Node pre = null;
+        while (tmp.size()!=0 || current !=null){
+            while (current!=null){
+                tmp.push(current);
+                current = current.left;
+            }
+            if(tmp.size()!= 0){
+                Node node = tmp.pop();
+                if(node.right == null || pre == node.right){
+                    System.out.println(node);
+                    pre = node;
+                    current = null;
 
+                }else {
+                    tmp.push(node);
+                    current = node.right;
+                }
+
+            }
+        }
+
+    }
     public static void postOrderNoRe(Node root) {
         Stack<Node> result = new Stack<Node>();
         Node p = root;

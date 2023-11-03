@@ -7,7 +7,7 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- *  KMP
+ * KMP
  * Created by dylan on 2019/10/17.
  */
 public class C10StrPattern {
@@ -136,6 +136,38 @@ public class C10StrPattern {
     }
 
     /**
+     *
+     *
+     * @param str
+     * @param pattern
+     * @return ["1-4","6-9"]
+     */
+    public static List<String> findPosition4(String str, String pattern) {
+        List<String> result = new ArrayList<>();
+        for (int i = 0; i < str.length(); i++) {
+            int start = 0;
+            int end;
+            for (int j = 0; j < pattern.length(); j++) {
+                if (i + j > str.length() - 1) {
+                    return result;
+                }
+                if (str.charAt(i + j) == pattern.charAt(j)) {
+                    if (j == 0) {
+                        start = i;
+                    }
+                    if (j == (pattern.length() - 1)) {
+                        end = i + j;
+                        result.add(String.format("%d-%d", start, end));
+                    }
+                } else {
+                    break;
+                }
+            }
+        }
+        return result;
+    }
+
+    /**
      * 暴力
      *
      * @param str
@@ -157,7 +189,7 @@ public class C10StrPattern {
                 }
                 if (s[i + j] == p[j]) {
                     if (j == p.length - 1) {
-                        result.add(String.format("%s-%s", tmpStart, i+j));
+                        result.add(String.format("%s-%s", tmpStart, i + j));
                     }
                 } else {
                     break;

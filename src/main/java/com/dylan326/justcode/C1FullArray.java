@@ -85,5 +85,6 @@ public class C1FullArray {
 
     public static void main(String[] args) {
         printFullArray(new int[]{1, 2, 3, 4}, 0, 3);
+        subsetsWithDup(new int[]{1,2,3,4});
     }
 }
