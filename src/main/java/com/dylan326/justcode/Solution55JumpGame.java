@@ -1,6 +1,6 @@
 package com.dylan326.justcode;
 
-public class Solution55 {
+public class Solution55JumpGame {
     public static boolean canJump(int[] nums) {
         int maxLength = nums[0] + 1;
         for (int i = 0; i < nums.length; i++) {
