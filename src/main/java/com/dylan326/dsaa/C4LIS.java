@@ -13,6 +13,7 @@ public class C4LIS {
      */
     public static int LIS(int[] a) {
         int[] maxLength = new int[a.length];
+        int result = 0;
         for (int i = 0; i < a.length; i++) {
             maxLength[i] = 1;
             for (int j = 0; j < i; j++) {
@@ -21,16 +22,10 @@ public class C4LIS {
                         maxLength[i] = maxLength[j] + 1;
                     }
                 }
-            }
-            System.out.println(maxLength[i]);
-        }
-        int tmp = 0;
-        for (int i = 0; i < maxLength.length; i++) {
-            if (maxLength[i] > tmp) {
-                tmp = maxLength[i];
+                result = Math.max(result, maxLength[i]);
             }
         }
-        return tmp;
+        return result;
     }
 
     /**
@@ -66,25 +61,20 @@ public class C4LIS {
     public static int[][] LISArray(int[] a) {
         int[] maxLength = new int[a.length];
         int[][] result = new int[a.length][a.length];
-
+        int max = 0;
         for (int i = 0; i < a.length; i++) {
             maxLength[i] = 1;
             for (int j = 0; j < i; j++) {
                 if (a[j] < a[i] && maxLength[i] <= maxLength[j] + 1) {
                     maxLength[i] = maxLength[j] + 1;
                 }
-            }
-        }
-        int tmp = 0;
-        for (int i = 0; i < maxLength.length; i++) {
-            if (maxLength[i] > tmp) {
-                tmp = maxLength[i];
+                max = Math.max(max, maxLength[i]);
             }
         }
 
         for (int j = maxLength.length - 1; j >= 0; j--) { // 找到结果，开始递减的位置
-            int flag = tmp;
-            if (maxLength[j] != tmp) { //第一个最长结果位置才是后续代码的起点
+            int flag = max;
+            if (maxLength[j] != max) { //第一个最长结果位置才是后续代码的起点
                 continue;
             }
             for (int i = j; i >= 0; i--) {
@@ -101,7 +91,7 @@ public class C4LIS {
     }
 
     public static void main(String[] args) {
-        LIS(new int[]{1, 7, 8, 3, 4});
+        System.out.println(LIS(new int[]{1, 7, 8, 3, 4}));
         LISArray(new int[]{1, 7, 8, 3, 4});
     }
 }

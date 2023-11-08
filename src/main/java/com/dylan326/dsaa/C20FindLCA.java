@@ -176,31 +176,6 @@ public class C20FindLCA {
             System.out.print(root + "->");
         }
     }
-    public static void postOrderNoRe2(Node root) {
-        Stack<Node> tmp = new Stack<>();
-        Node current = root;
-        Node pre = null;
-        while (tmp.size()!=0 || current !=null){
-            while (current!=null){
-                tmp.push(current);
-                current = current.left;
-            }
-            if(tmp.size()!= 0){
-                Node node = tmp.pop();
-                if(node.right == null || pre == node.right){
-                    System.out.println(node);
-                    pre = node;
-                    current = null;
-
-                }else {
-                    tmp.push(node);
-                    current = node.right;
-                }
-
-            }
-        }
-
-    }
     public static void postOrderNoRe(Node root) {
         Stack<Node> result = new Stack<Node>();
         Node p = root;
@@ -257,19 +232,20 @@ public class C20FindLCA {
             }
         }
     }
+
+    private static class Node {
+        public Node(int val) {
+            this.val = val;
+        }
+
+        int val;
+        Node left;
+        Node right;
+
+        @Override
+        public String toString() {
+            return String.valueOf(val);
+        }
+    }
 }
 
-class Node {
-    public Node(int val) {
-        this.val = val;
-    }
-
-    int val;
-    Node left;
-    Node right;
-
-    @Override
-    public String toString() {
-        return String.valueOf(val);
-    }
-}
