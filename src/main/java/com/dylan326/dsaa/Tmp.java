@@ -7,18 +7,20 @@ import java.util.Stack;
  */
 public class Tmp {
 
-    public static void inorderNoRecursive(TreeNode root) {
+    public static void preorderNoRecursive(TreeNode root) {
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode current = root;
-        while (stack.size() != 0 || current != null) {
-            while (current != null) {
-                stack.push(current);
-                current = current.left;
-            }
+        stack.add(root);
+        while (stack.size() != 0) {
             TreeNode tmp = stack.pop();
             if (tmp != null) {
-                System.out.println(tmp);
-                stack.push(tmp.right);
+                System.out.println(tmp.val);
+                if(tmp.right !=null){
+                    stack.push(tmp.right);
+                }
+
+                if(tmp.left !=null){
+                    stack.push(tmp.left);
+                }
             }
         }
 
@@ -103,9 +105,9 @@ public class Tmp {
         n1.left = n2;
         n2.right = n3;
 
-        inorderNoRecursive(root);
-        System.out.println("---");
-        inorderRecursive(root);
+        preorderNoRecursive(root);
+//        System.out.println("---");
+//        inorderRecursive(root);
 
     }
 

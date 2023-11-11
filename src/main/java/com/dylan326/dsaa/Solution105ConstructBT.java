@@ -34,23 +34,26 @@ public class Solution105ConstructBT {
         tmp.add(root);
         int pre = 1;
         int in = 0;
-        while (tmp.size() !=0){
+        while (tmp.size() !=0 && pre < preorder.length){
             TreeNode top = tmp.peek();
             if(top.val != inorder[in]){
-                TreeNode tmpNode = new TreeNode(preorder[pre]);
-                if(top.left == null){
-                    top.left = tmpNode;
-                }else {
-                    top.right = tmpNode;
-                }
-                tmp.add(tmpNode);
+                top.left = new TreeNode(preorder[pre]);
+                tmp.add(top.left);
                 pre++;
             } else {
-                top = tmp.pop();
-                in++;
+                while(tmp.size()!=0  && tmp.peek().val == inorder[in]){// 这个地方注意  tmp.peek
+                    top = tmp.pop();
+                    in++;
+                }
+                top.right= new TreeNode(preorder[pre]);
+                tmp.add(top.right);
+                pre++;
             }
         }
         return root;
+    }
+    public static void main(String[] args) {
+        constructBTNoRecursive(new int[]{3,9,20,15,7},new int[]{9,3,15,20,7});
     }
 
 
@@ -113,8 +116,6 @@ public class Solution105ConstructBT {
         return tmpRoot;
     }
 
-    public static void main(String[] args) {
 
-    }
 
 }
