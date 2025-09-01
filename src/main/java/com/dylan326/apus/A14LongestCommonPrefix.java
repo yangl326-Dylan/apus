@@ -6,6 +6,13 @@ package com.dylan326.apus;
  */
 public class A14LongestCommonPrefix {
 
+    /**
+     * Finds the longest common prefix string amongst an array of strings.
+     * 查找字符串数组中最长的公共前缀字符串。
+     *
+     * @param strs The array of strings. / 字符串数组
+     * @return The longest common prefix string. / 最长的公共前缀字符串
+     */
     public String longestCommonPrefix(String[] strs) {
         if (strs.length == 0) {
             return "";
@@ -18,10 +25,14 @@ public class A14LongestCommonPrefix {
         while (true) {
             char tmp;
             for (int i = 0; i < strs.length; i++) {
+                // If the index is out of bounds for the current string, break the loop.
+                // 如果索引超出当前字符串的范围，则中断循环。
                 if (index > strs[i].length() - 1) {
                     break a;
                 }
                 tmp = strs[0].charAt(index);
+                // If the character at the current index doesn't match, break the loop.
+                // 如果当前索引处的字符不匹配，则中断循环。
                 if (tmp != strs[i].charAt(index)) {
                     break a;
                 }

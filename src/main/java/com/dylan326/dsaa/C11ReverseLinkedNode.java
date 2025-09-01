@@ -5,8 +5,9 @@ import java.util.Arrays;
 
 /**
  * Created by dylan on 2019/11/11.
- * 链表反转
+ * 链表反转 / Reverse Linked List
  * Given 1->2->3->4->5->6, you should return the list as 6->5->4->3->2->1.
+ * 给定 1->2->3->4->5->6, 你应该返回 6->5->4->3->2->1.
  */
 public class C11ReverseLinkedNode {
 
@@ -34,8 +35,11 @@ public class C11ReverseLinkedNode {
         ListNode pre = null;
         ListNode curr = sourceNode;
         while (curr != null) {
+            // Store the next node / 存储下一个节点
             ListNode tmpNext = curr.next;
+            // Reverse the link / 反转链接
             curr.next = pre;
+            // Move pre and curr one step forward / pre 和 curr 向前移动一步
             pre = curr;
             curr = tmpNext;
         }
@@ -44,19 +48,21 @@ public class C11ReverseLinkedNode {
 
     /**
      * Given v- 1->2->3->4->5->6
-     * 理解度更高
+     * 理解度更高 / Easier to understand
      *
      * @param sourceNode
      * @return
      */
 
     public static ListNode reverseLinkNode2(ListNode sourceNode) {
+        // Dummy head / 虚拟头节点
         ListNode virHead = new ListNode(0);
         ListNode curr = sourceNode;
         while (curr != null) {
             ListNode tmp = virHead.next;
             ListNode next = curr.next;
 
+            // Insert current node at the beginning of the reversed list / 将当前节点插入到反转列表的开头
             curr.next = tmp;
             virHead.next = curr;
 
@@ -65,6 +71,15 @@ public class C11ReverseLinkedNode {
         return virHead.next;
     }
 
+    /**
+     * Reverse a linked list from position m to n. Do it in one-pass.
+     * Note: 1 ≤ m ≤ n ≤ length of list.
+     * 反转从位置m到n的链表。一次遍历完成。
+     * 注意：1 ≤ m ≤ n ≤ 链表长度。
+     * @param sourceNode
+     * @param k
+     * @return
+     */
     public static ListNode[] reverseLinkNode2(ListNode sourceNode, int k) {
         ListNode virHead = new ListNode(0);
         ListNode curr = sourceNode;
@@ -78,7 +93,8 @@ public class C11ReverseLinkedNode {
             virHead.next = curr;
             curr.next = tmp;
             tail = tmp;
-            curr = currNext;// 循环
+            // 循环 / loop
+            curr = currNext;
             if (++counter >= k) {
                 nextHead = curr;
                 break;

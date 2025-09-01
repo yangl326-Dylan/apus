@@ -8,33 +8,58 @@ import java.util.Stack;
 
 /**
  * Created by dylan on 2023/10/19.
+ * 查找最近公共祖先 / Find Lowest Common Ancestor (LCA)
  */
 public class C20FindLCA {
 
 
+    /**
+     * Finds the Lowest Common Ancestor (LCA) of two nodes in a binary tree.
+     * 查找二叉树中两个节点的最近公共祖先 (LCA)。
+     *
+     * @param root The root of the binary tree. / 二叉树的根节点
+     * @param n1 The first node. / 第一个节点
+     * @param n2 The second node. / 第二个节点
+     * @return The LCA of n1 and n2. / n1 和 n2 的 LCA
+     */
     public static Node findLCA2(Node root, Node n1, Node n2) {
+        // If root is null or matches one of the nodes, it's the LCA / 如果根节点为空或与其中一个节点匹配，则它是LCA
         if (root == null || root == n1 || root == n2) {
             return root;
         }
+        // Recursively search in left and right subtrees / 在左右子树中递归搜索
         Node left = findLCA(root.left, n1, n2);
         Node right = findLCA(root.right, n1, n2);
+        // If left is null, LCA is in the right subtree / 如果左侧为空，LCA在右子树中
         if (left == null && right != null) {
             return right;
-        } else if (left != null && right == null) {
+        } else if (left != null && right == null) { // If right is null, LCA is in the left subtree / 如果右侧为空，LCA在左子树中
             return left;
-        } else {
+        } else { // Both left and right are not null, so root is the LCA / 左右都不为空，所以根节点是LCA
             return root;
         }
     }
 
+    /**
+     * Finds the Lowest Common Ancestor (LCA) of two nodes by finding their paths from the root.
+     * 通过查找两个节点从根节点到它们的路径来查找最近公共祖先 (LCA)。
+     *
+     * @param root The root of the binary tree. / 二叉树的根节点
+     * @param n1 The first node. / 第一个节点
+     * @param n2 The second node. / 第二个节点
+     * @return The LCA of n1 and n2. / n1 和 n2 的 LCA
+     */
     public static Node findLCA(Node root, Node n1, Node n2) {
         List<Node> tmp1 = new ArrayList<>();
         List<Node> tmp2 = new ArrayList<>();
+        // Find path to n1 / 查找n1的路径
         findN(root, n1, tmp1);
+        // Find path to n2 / 查找n2的路径
         findN(root, n2, tmp2);
 
         int n = Math.min(tmp1.size(), tmp2.size());
         Node result = null;
+        // Compare paths to find the common ancestor / 比较路径以查找公共祖先
         for (int i = 0; i < n; i++) {
             if (tmp1.get(i) == tmp2.get(i)) {
                 result = tmp1.get(i);
@@ -47,6 +72,14 @@ public class C20FindLCA {
 
     }
 
+    /**
+     * Finds the path from the root to a target node using an iterative post-order traversal.
+     * 使用迭代后序遍历查找从根到目标节点的路径。
+     *
+     * @param root The root of the binary tree. / 二叉树的根节点
+     * @param target The target node. / 目标节点
+     * @param record The list to store the path. / 存储路径的列表
+     */
     public static void findN(Node root, Node target, List<Node> record) {
         Stack<Node> result = new Stack<Node>();
         Node p = root;
@@ -58,6 +91,7 @@ public class C20FindLCA {
             }
             if (result.size() != 0) {
                 Node tmp = result.pop();
+                // If right child is null or already visited / 如果右子节点为空或已访问
                 if (tmp.right == null || tmp.right == pre) {
                     pre = tmp;
                     p = null;
@@ -71,6 +105,7 @@ public class C20FindLCA {
             }
 
         }
+        // Add all nodes from stack to record, then add the target node / 将堆栈中的所有节点添加到记录中，然后添加目标节点
         record.addAll(result);
         record.add(target);
     }

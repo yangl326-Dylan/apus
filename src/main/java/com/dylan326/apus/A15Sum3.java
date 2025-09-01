@@ -13,6 +13,7 @@ public class A15Sum3 {
 
     /**
      * 直接处理方式
+     * Direct processing method
      *
      * @param nums
      * @param target
@@ -20,14 +21,20 @@ public class A15Sum3 {
      */
     public static List<List<Integer>> sum3(int[] nums, int target) {
         List<List<Integer>> result = new ArrayList<List<Integer>>();
-        if (nums.length < 3) { // 初始条件检查
+        // 初始条件检查
+        // Initial condition check
+        if (nums.length < 3) { 
             return result;
         }
-        Arrays.sort(nums); // 排好序
+        // 排好序
+        // Sort the array
+        Arrays.sort(nums); 
         for (int i = 0; i < nums.length; i++) {
             int start = i + 1, end = nums.length - 1;
             int tmp = target - nums[i];
-            if (i > 0 && nums[i] == nums[i - 1]) { // 相等元素 继续下一个
+            // 相等元素 继续下一个
+            // Skip equal elements
+            if (i > 0 && nums[i] == nums[i - 1]) { 
                 continue;
             }
             while (start < end) {
@@ -59,6 +66,7 @@ public class A15Sum3 {
 
     /**
      * N数和或者和靠近处理模式
+     * N-sum or closest sum processing mode
      *
      * @param nums
      * @param target
@@ -73,6 +81,7 @@ public class A15Sum3 {
 
     /**
      * backtracking 来处理
+     * Process with backtracking
      *
      * @param result
      * @param item
@@ -83,19 +92,20 @@ public class A15Sum3 {
     public static void sum3Backtracking(Map<List<Integer>, List<Integer>> result, List<Integer> item, int[] nums, int remain, int start) {
         if (nums.length> 0 && remain < minArraySum(nums)) {
             return;
-        } else if (remain == 0 && item.size() == 3) { // 符合结果值
-            result.put(new ArrayList<>(item), new ArrayList<>(item)); // 按照题目要求，简单用hashmap去重复数组
+        } else if (remain == 0 && item.size() == 3) { // 符合结果值 / Found a valid result
+            result.put(new ArrayList<>(item), new ArrayList<>(item)); // 按照题目要求，简单用hashmap去重复数组 / Use HashMap to remove duplicate results
         } else {
             for (int i = start; i < nums.length; i++) {
-                item.add(nums[i]);//* ① 添加当前元素
-                sum3Backtracking(result, item, nums, remain - nums[i], i + 1); //* ② 之前的目标值为remain-nums[i]
-                item.remove(item.size() - 1); // * ③ 回退元素
+                item.add(nums[i]);//* ① 添加当前元素 / Add current element
+                sum3Backtracking(result, item, nums, remain - nums[i], i + 1); //* ② 之前的目标值为remain-nums[i] / The target value for the next recursion is remain-nums[i]
+                item.remove(item.size() - 1); // * ③ 回退元素 / Backtrack element
             }
         }
     }
 
     /**
      * 计算出当前最小值， 退出递归的条件，减少递归次数
+     * Calculate the current minimum value to prune the recursion and reduce the number of recursive calls.
      * @param nums
      * @return
      */
