@@ -1,3 +1,5 @@
+package com.dylan326.aicode;
+
 /**
  * 该类用于解决查找字符串中最长回文子串的问题
  */

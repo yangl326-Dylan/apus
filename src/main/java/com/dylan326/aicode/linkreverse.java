@@ -1,3 +1,5 @@
+package com.dylan326.aicode;
+
 // 定义链表节点类
 class ListNode {
     int val;

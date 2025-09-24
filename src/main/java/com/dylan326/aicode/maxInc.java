@@ -1,3 +1,5 @@
+package com.dylan326.aicode;
+
 public class maxInc {
     /**
      * 计算整型数组的最长递增子序列的长度
