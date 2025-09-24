@@ -11,7 +11,7 @@ public class A0 {
      * @param args Command line arguments. / 命令行参数
      */
     public static void main(String[] args) {
-        // Print "biubiu~" to the console. / 打印 "biubiu~" 到控制台
+         // Print "biubiu~" to the console. / 打印 "biubiu~" 到控制台
         System.out.println("biubiu~");
     }
 }
