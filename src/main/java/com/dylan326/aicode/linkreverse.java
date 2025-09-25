@@ -7,7 +7,7 @@ class ListNode {
     ListNode(int x) { val = x; }
 }
 
-public class LinkReverse {
+class LinkReverse {
     /**
      * 将链表按照每2个节点为一组进行反转
      * @param head 链表的头节点
