@@ -22,6 +22,7 @@ public class HashMapExample {
         hashMap.put("apple", 10);
         hashMap.put("banana", 5);
         hashMap.put("orange", 8);
+        hashMap.put("mango", 9);
         
         // 注意：HashMap允许一个null键和多个null值
         hashMap.put(null, 0);
