@@ -143,7 +143,6 @@ public class StringExample {
         
         // 判断字符串是否为空
         System.out.println("是否为空: " + checkString.isEmpty());
-        System.out.println("是否为空白: " + checkString.isBlank()); // Java 11+
         
         // 8. 字符串格式化操作
         System.out.println("\n=== 字符串格式化操作 ===");
